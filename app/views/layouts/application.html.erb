@@ -14,8 +14,12 @@
       <li><%= link_to 'สร้างหัวข้อ', new_article_path %></li>
       <li><%= link_to 'เกี่ยวกับเรา', static_about_path %></li>
       <li><%= link_to 'ติดต่อเรา', static_contact_path %></li>
-      <li><%= link_to 'ลงทะเบียน', new_user_path %></li>
-      <li><%= link_to 'ลงชื่อเข้าใช้', '#' %></li>
+      <% unless session[:user_id].present? %>
+        <li><%= link_to 'ลงทะเบียน', new_user_path %></li>
+        <li><%= link_to 'ลงชื่อเข้าใช้', new_session_path %></li>
+      <% else %>
+        <li><%= link_to 'ลงชือออก' , session_path(session), method: :delete %></li>
+      <% end %>
     </ul>
   </nav>
 

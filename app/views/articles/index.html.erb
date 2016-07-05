@@ -14,10 +14,12 @@
         <td><%= h truncate article.description, length: 140 %></td>
         <td><%= time_ago_in_words article.created_at %></td>
         <td><%= article.user.name if article.user %></td>
+        <% if session[:user_id].present? %>
         <td><%= link_to 'ลบกรทู้', article_path(article),
                         method: :delete,
                         class: 'btn btn-danger btn-xs',
                         data: {confirm: 'แน่ใจแล้วหรือ?​ กระทู้จะถูกลบถาวรเลยนะ'} %></td>
+        <% end %>                
       </tr>
   <% end %>
   </tbody>

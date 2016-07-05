@@ -1,0 +1,20 @@
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <%= form_for :session, url: sessions_path, method: :post do |f| %>
+          <p>
+            <%= f.label :email, 'อีเมล ' %>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'อีเมลล์' %>
+          </p>
+          <p>
+            <%= f.label :password, 'รหัสผ่าน' %>
+            <%= f.password_field :password, class: 'form-control', placeholder: 'รหัสผ่าน' %>
+          </p>
+          <p>
+            <%= f.submit 'เข้าสู่ระบบ', class: 'btn btn-primary' %>
+          </p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   root 'articles#index'
   resources :users , except: :index
+  resources :sessions , only: [:new , :create, :destroy]
   get 'static/contact'
   get 'static/about'
   resources :articles
