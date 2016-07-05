@@ -1,7 +1,10 @@
 class ArticlesController < ApplicationController
+   before_action :require_same_user , only: [ :edit , :update ,:destroy]
+  before_action :require_user, except: [:index , :show]
   before_action :set_article , :only => [:show , :edit , :update, :destroy]
   def index
     @articles = Article.order(created_at: :desc).paginate(page: params[:page],per_page: 20)
+    rescue ActiveRecord::RecordNotFound
   end
 
   def new
@@ -40,9 +43,16 @@ class ArticlesController < ApplicationController
   private
   def set_article
     @article = Article.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
   end
 
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+   def require_same_user
+    if current_user != @article.user
+      redirect_to root_path , notice: 'ทำไม่ได้ครับ '
+    end
   end
 end

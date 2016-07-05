@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue ActiveRecord::RecordNotFound
   end
 
   def logged_in?
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
   	if !logged_in?
-  		redirect_to root_path, notice: 'กรุณาลงชื่อเข้าระบบก่อน' 
+  		redirect_to new_session_path, notice: 'กรุณาลงชื่อเข้าระบบก่อน' 
   	end
   end
 end
