@@ -1,0 +1,22 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.form-control{
+  max-width: 500px;
+}
+
+.alert-info {
+  padding: 10px;
+}
+
+.errors{
+  padding: 20px;
+  border: 1px solid red;
+  border-radius: .8em;
+  color: red;
+}
+.errors li{
+  list-style: none;
+}

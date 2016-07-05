@@ -1,0 +1,20 @@
+<% if @article.errors.any? %>
+    <h3>สร้างกระทู้ไม่ได้เพราะว่า : </h3>
+    <ul class="errors">
+      <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @article do |f| %>
+    <p>
+      <%= f.label :title, 'หัวข้อ'  %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :description, 'กระทู้' %>
+      <%= f.text_area :description, class: 'form-control'  %>
+    </p>
+    <%= f.submit 'สร้างกระทู้', class: 'btn btn-primary' %>
+<% end %>

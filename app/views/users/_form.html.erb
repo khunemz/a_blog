@@ -1,0 +1,40 @@
+<% if @user.errors.any? %>
+    <h3>ไม่สามารถลงทะเบียนได้เพราะว่า : </h3>
+    <ul class="errors">
+      <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <%= form_for @user do |f| %>
+          <p>
+            <%= f.label :name, 'ชื่อ' %>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'ชื่อ' %>
+          </p>
+          <p>
+            <%= f.label :email, 'อีเมล ' %>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'อีเมลล์' %>
+          </p>
+          <p>
+            <%= f.label :password, 'รหัสผ่าน' %>
+            <%= f.password_field :password, class: 'form-control', placeholder: 'รหัสผ่าน' %>
+          </p>
+
+          <p>
+            <%= f.label :password_confirmation, 'ยืนยันรหัสผ่าน' %>
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'ยืนยันรหัสผ่าน' %>
+          </p>
+         
+          <% if @user.id.nil? %>
+            <%= f.submit 'ลงทะเบียน', class: 'btn btn-primary' %>
+          <% else %>
+            <%= f.submit 'แก้ไข', class: 'btn btn-primary' %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

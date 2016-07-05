@@ -1,0 +1,28 @@
+<h2>กระทู้ทั้งหมด</h2>
+<table class="table table-striped">
+  <thead>
+  <th>หัวข้อ</th>
+  <th>กระทู้</th>
+  <th>กระทู้ถูกสร้างเมื่อ</th>
+  <th>สร้างโดย</th>
+  <th></th>
+  </thead>
+  <tbody>
+  <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title, article_path(article) %></td>
+        <td><%= h truncate article.description, length: 140 %></td>
+        <td><%= time_ago_in_words article.created_at %></td>
+        <td><%= article.user.name if article.user %></td>
+        <td><%= link_to 'ลบกรทู้', article_path(article),
+                        method: :delete,
+                        class: 'btn btn-danger btn-xs',
+                        data: {confirm: 'แน่ใจแล้วหรือ?​ กระทู้จะถูกลบถาวรเลยนะ'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+  <div align="center">
+    <%= will_paginate %>
+  </div>

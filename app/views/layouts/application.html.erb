@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>แค่บล็อก บล๊อกนึง ...</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <ul class="nav nav-pills">
+      <li><%= link_to 'หน้าหลัก', root_path %></li>
+      <li><%= link_to 'สร้างหัวข้อ', new_article_path %></li>
+      <li><%= link_to 'เกี่ยวกับเรา', static_about_path %></li>
+      <li><%= link_to 'ติดต่อเรา', static_contact_path %></li>
+      <li><%= link_to 'ลงทะเบียน', new_user_path %></li>
+      <li><%= link_to 'ลงชื่อเข้าใช้', '#' %></li>
+    </ul>
+  </nav>
+
+
+  <% if notice %>
+      <div class="alert-info">
+        <%= notice %>
+      </div>
+  <% end %>
+
+
+  <%= yield %>
+</div>
+
+<footer class="footer" style="padding-bottom: 5px;">
+  <div class="container">
+    <hr>
+    <p class="text-muted">
+      สงวนลิขสิทธิ์​2016 โดย ชุติพงศ์ รูปกลม
+    </p>
+  </div>
+</footer>
+</body>
+</html>

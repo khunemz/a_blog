@@ -1,0 +1,49 @@
+<h2>โปรไฟล์</h2>
+
+<table class="table table-striped">
+	<thead>
+		<th></th>
+		<th>ไอดี</th>
+		<th>ชือ</th>
+		<th>อีเมลล์</th>
+		<th></th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= gravatar_for @user %></td>
+			<td><%= @user.id %></td>
+			<td><%= @user.name %></td>
+			<td><%= @user.email %></td>
+			<th><%= link_to 'แก้ไข' , edit_user_path(@user) %></th>
+			<th><%= link_to 'ลบผู้ใช้งาน' , user_path(@user) , method: :delete , data: { confirm: 'ผู้ใช้งานจะถูกลบออกถาวร แน่ใจแล้วใช่หรือไม่?'} %></th>
+		</tr>
+	</tbody>
+
+	<hr />
+	<table  class="table table-hover">
+		<thead>
+
+			<th>กระทู้หมายเลข</th>
+			<th>หัวข้อกระทู้</th>
+			<th>กระทู้</th>
+			<th>สร้างเมื่อ</th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @user_articles.each do |user_article| %>
+			<tr>
+				<td><%= user_article.id %></td>
+				<td><%= link_to user_article.title , article_path(user_article) %></td>
+				<td><%=h truncate user_article.description, length: 140 %></td>
+				<td><%= time_ago_in_words user_article.created_at %></td>
+				<td><%= link_to 'แก้ไข', edit_article_path(user_article) %></td>
+				<td><%= link_to 'ลบกระทู้', article_path(user_article), method: :delete, data: { confirm: 'กระทู้จะถูกลบถาวร แน่ใจแล้วนะตะเอง'} %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</table>
+
+<%= will_paginate @user_articles %>
