@@ -14,7 +14,7 @@
         <td><%= h truncate article.description, length: 140 %></td>
         <td><%= time_ago_in_words article.created_at %></td>
         <td><%= article.user.name if article.user %></td>
-        <% if session[:user_id].present? %>
+        <% if logged_in? && current_user == article.user %>
         <td><%= link_to 'ลบกรทู้', article_path(article),
                         method: :delete,
                         class: 'btn btn-danger btn-xs',
