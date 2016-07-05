@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   		session[:user_id] = user.id
   		redirect_to user_path(user), notice: 'ลงชื่อเข้าใช้สำเร็จ ยินดีต้อนรับกลับมาครับ'
   	else
-  		render :new , notice: 'ลงชื่อเข้าใช้ผิดพลาด กรุณาลองใหม่อีกครั้ง'
+  		render :new, notice: 'ลงชื่อเข้าใช้ผิดพลาด กรุณาลองใหม่อีกครั้ง'
   	end
   end
 

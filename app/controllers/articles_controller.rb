@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :require_user, except: [:index , :show]
   before_action :set_article , :only => [:show , :edit , :update, :destroy]
   def index
-    @articles = Article.order(created_at: :desc).paginate(page: params[:page],per_page: 20)
+    @articles = Article.order(created_at: :desc).paginate(page: params[:page],per_page: 11)
     rescue ActiveRecord::RecordNotFound
   end
 

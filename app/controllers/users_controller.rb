@@ -7,12 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    begin
       @user_articles = @user.articles.order(created_at: :desc)
       .paginate(page: params[:page] , per_page: 20)
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path, notice: 'ไม่มีกระทุ้ที่คุณหา'
-    end
   end
 
   def create
